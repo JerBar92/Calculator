@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+body {
+  min-height: 100vw;
+  background-image: url(/img/Stars.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#calculator {
+  border: 1px solid black;
+  width: 300px;
+  height: 400px;
+  margin: 4rem auto;
+  border-radius: 6%;
+  background-color: rgb(34, 33, 33);
+}
+#display {
+  border: 1px solid black;
+  width: 280px;
+  height: 100px;
+  margin: 5px auto;
+  border-radius: 10%;
+  background-color: rgb(5, 27, 7);
+}
+#allBtn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5px;
+}
+.button {
+  border: 1px solid black;
+  width: 60px;
+  height: 50px;
+  border-radius: 10%;
+}
+.delete {
+  background-color: rgb(143, 7, 7);
+}
+.number {
+  background-color: rgb(83, 83, 83);
+}
+.operator {
+  background-color: rgb(240, 161, 43);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.special {
+  background-color: rgb(155, 154, 154);
+}
