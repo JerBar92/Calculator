@@ -12,7 +12,7 @@ body {
   background-size: cover;
 }
 
-p {
+#onScreen {
   text-align: end;
   margin: 20px 10px;
   color: rgb(194, 191, 191);
@@ -46,6 +46,7 @@ p {
   width: 60px;
   height: 50px;
   border-radius: 10%;
+  cursor: pointer;
 }
 .delete {
   background-color: rgb(143, 7, 7);
