@@ -11,6 +11,16 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+p {
+  text-align: end;
+  margin: 10px;
+  color: rgb(194, 191, 191);
+}
+
+#result {
+  font-size: 3rem;
+}
 #calculator {
   border: 1px solid black;
   width: 300px;
