@@ -39,7 +39,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return num2 === 0 ? "ERROR" : num1 / num2;
+  return num2 === 0 ? (display.textContent = "ERROR") : num1 / num2;
 }
 
 function operate(num1, num2) {
@@ -131,7 +131,7 @@ btnMult.addEventListener("click", () => {
 });
 
 btnDiv.addEventListener("click", () => {
-  display.textContent = "/";
+  display.textContent = "÷";
   operator = "/";
   multipleOperation();
 });
@@ -168,7 +168,9 @@ btnFloat?.addEventListener("click", () => {
 });
 
 btnNeg?.addEventListener("click", () => {
-  tempNumber = "-" + tempNumber;
+  tempNumber.includes("-")
+    ? (tempNumber = tempNumber.substring(1))
+    : (tempNumber = "-" + tempNumber);
   display.textContent = tempNumber;
 });
 
