@@ -48,9 +48,9 @@ function operate(num1, num2) {
       result = add(num1, num2);
       break;
     case "-":
-      result = substract(num1, num2);
+      result = subtract(num1, num2);
       break;
-    case "x":
+    case "*":
       result = multiply(num1, num2);
       break;
     case "/":
@@ -117,8 +117,8 @@ btnSub.addEventListener("click", () => {
 });
 
 btnMult.addEventListener("click", () => {
-  display.textContent = "x";
-  operator = "x";
+  display.textContent = "*";
+  operator = "*";
   multipleOperation();
 });
 
