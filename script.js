@@ -39,7 +39,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return num2 === 0 ? "You cannot divide by 0" : num1 / num2;
+  return num2 === 0 ? "ERROR" : num1 / num2;
 }
 
 function operate(num1, num2) {
@@ -48,9 +48,9 @@ function operate(num1, num2) {
       result = add(num1, num2);
       break;
     case "-":
-      result = subtract(num1, num2);
+      result = substract(num1, num2);
       break;
-    case "*":
+    case "x":
       result = multiply(num1, num2);
       break;
     case "/":
@@ -66,89 +66,85 @@ function reset() {
   tempNumber = "";
   display.textContent = "0";
 }
-btn0.addEventListener("click", () => {
-  tempNumber += "0";
-  display.textContent = tempNumber;
-});
 
-btn1.addEventListener("click", () => {
-  tempNumber += "1";
-  display.textContent = tempNumber;
-});
+function getNumberPad() {
+  const numberArray = [
+    btn0,
+    btn1,
+    btn2,
+    btn3,
+    btn4,
+    btn5,
+    btn6,
+    btn7,
+    btn8,
+    btn9,
+  ];
 
-btn2.addEventListener("click", () => {
-  tempNumber += "2";
-  display.textContent = tempNumber;
-});
+  for (let i = 0; i < 10; i++) {
+    numberArray[i]?.addEventListener("click", () => {
+      tempNumber += String(i);
+      display.textContent = tempNumber;
+    });
+  }
+}
 
-btn3.addEventListener("click", () => {
-  tempNumber += "3";
-  display.textContent = tempNumber;
-});
+function multipleOperation() {
+  if (operand.length === 2) {
+    operate(operand[0], operand[1]);
+    operand = [];
+    operand.push(result);
+    operand.push(Number(tempNumber));
+    tempNumber = "";
+  } else {
+    operand.push(Number(tempNumber));
+    tempNumber = "";
+  }
+}
 
-btn4.addEventListener("click", () => {
-  tempNumber += "4";
-  display.textContent = tempNumber;
-});
-
-btn5.addEventListener("click", () => {
-  tempNumber += "5";
-  display.textContent = tempNumber;
-});
-
-btn6.addEventListener("click", () => {
-  tempNumber += "6";
-  display.textContent = tempNumber;
-});
-
-btn7.addEventListener("click", () => {
-  tempNumber += "7";
-  display.textContent = tempNumber;
-});
-
-btn8.addEventListener("click", () => {
-  tempNumber += "8";
-  display.textContent = tempNumber;
-});
-
-btn9.addEventListener("click", () => {
-  tempNumber += "9";
-  display.textContent = tempNumber;
-});
+getNumberPad();
 
 btnAdd.addEventListener("click", () => {
-  operand.push(Number(tempNumber));
   display.textContent = "+";
   operator = "+";
-  tempNumber = "";
+  multipleOperation();
 });
 
 btnSub.addEventListener("click", () => {
-  operand.push(Number(tempNumber));
   display.textContent = "-";
   operator = "-";
-  tempNumber = "";
+  multipleOperation();
 });
 
 btnMult.addEventListener("click", () => {
-  operand.push(Number(tempNumber));
-  display.textContent = "*";
-  operator = "*";
-  tempNumber = "";
+  display.textContent = "x";
+  operator = "x";
+  multipleOperation();
 });
 
 btnDiv.addEventListener("click", () => {
-  operand.push(Number(tempNumber));
   display.textContent = "/";
   operator = "/";
-  tempNumber = "";
+  multipleOperation();
 });
 
 btnEq.addEventListener("click", () => {
-  operand.push(Number(tempNumber));
-  operate(operand[0], operand[1]);
-  display.textContent = result;
-  operand.splice(0, 2, result);
+  if (operand.length === 2) {
+    operate(operand[0], operand[1]);
+    operand = [];
+    operand.push(result);
+    operand.push(Number(tempNumber));
+    operate(operand[0], operand[1]);
+    display.textContent = result;
+    operand.splice(0, 2, result);
+    tempNumber = "";
+  } else {
+    operand.push(Number(tempNumber));
+    operate(operand[0], operand[1]);
+    display.textContent = result;
+    operand.splice(0, 2, result);
+    tempNumber = "";
+  }
 });
 
 btnAc?.addEventListener("click", () => reset());
