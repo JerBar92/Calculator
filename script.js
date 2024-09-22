@@ -102,6 +102,14 @@ function multipleOperation() {
   }
 }
 
+function roundResult(result) {
+  if (Number.isInteger(result)) {
+    display.textContent = result;
+  } else {
+    display.textContent = result.toFixed(4);
+  }
+}
+
 getNumberPad();
 
 btnAdd.addEventListener("click", () => {
@@ -135,16 +143,36 @@ btnEq.addEventListener("click", () => {
     operand.push(result);
     operand.push(Number(tempNumber));
     operate(operand[0], operand[1]);
-    display.textContent = result;
+    roundResult(result);
     operand.splice(0, 2, result);
     tempNumber = "";
   } else {
     operand.push(Number(tempNumber));
     operate(operand[0], operand[1]);
-    display.textContent = result;
+    roundResult(result);
     operand.splice(0, 2, result);
     tempNumber = "";
   }
 });
 
+btnC?.addEventListener("click", () => {
+  tempNumber = "";
+  display.textContent = "0";
+});
+
 btnAc?.addEventListener("click", () => reset());
+
+btnFloat?.addEventListener("click", () => {
+  tempNumber += ".";
+  display.textNumber = tempNumber;
+});
+
+btnNeg?.addEventListener("click", () => {
+  tempNumber = "-" + tempNumber;
+  display.textContent = tempNumber;
+});
+
+btnDel?.addEventListener("click", () => {
+  tempNumber = tempNumber.slice(0, -1);
+  display.textContent = tempNumber;
+});
