@@ -41,6 +41,7 @@ body {
   justify-content: space-around;
   gap: 5px;
 }
+
 .button {
   border: 1px solid black;
   width: 60px;
@@ -48,17 +49,34 @@ body {
   border-radius: 10%;
   cursor: pointer;
 }
+
 .delete {
   background-color: rgb(143, 7, 7);
 }
+
+.delete:hover {
+  background-color: rgb(90, 6, 6);
+}
 .number {
   background-color: rgb(83, 83, 83);
+}
+
+.number:hover {
+  background-color: rgb(54, 54, 54);
 }
 .operator {
   background-color: rgb(240, 161, 43);
   font-size: 1.2rem;
   font-weight: 400;
 }
+
+.operator:hover {
+  background-color: rgb(153, 104, 31);
+}
 .special {
   background-color: rgb(155, 154, 154);
+}
+
+.special:hover {
+  background-color: rgb(112, 111, 111);
 }
